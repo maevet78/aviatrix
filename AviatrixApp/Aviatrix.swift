@@ -12,9 +12,16 @@ class Aviatrix {
     var running = false
     
     var author = " "
-    init(authorName: String){
+    var location = " "
+    var data = AviatrixData()
+    
+    init(authorName: String, currentLocation: String){
         author = authorName
+        location = currentLocation
+   
     }
+    
+    
     
     func start() -> Bool {
         running = true
@@ -26,14 +33,15 @@ class Aviatrix {
     }
     
     func flyTo(destination : String) {
-        
+        location = destination
     }
     
-    func distanceTo(target : String) {
+    func distanceTo(target : String, newLocation : String) -> Int {
+        return data.knownDistances[newLocation]![target]!
     
     }
     
     func knownDestinations() -> [String] {
-       return ["St. Louis"]
+       return ["St. Louis", "Phoenix", "Denver", "SLC"]
     }
 }
